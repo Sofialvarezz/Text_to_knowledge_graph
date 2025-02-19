@@ -1,0 +1,10 @@
+## modelos utilizados: 
+
+python -m spacy download es_core_news_sm
+
+ollama pull llama2:7b
+
+
+##configurar proxy desde la terminal
+
+--proxy=http://127.0.0.1:8080

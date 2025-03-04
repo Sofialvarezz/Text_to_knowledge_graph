@@ -47,7 +47,6 @@ class TextToGraphPipeline:
                 raise ValueError("No se pudo generar el grafo a partir de las relaciones identificadas.")
             print(f"Grafo extraído:\n{final_graph}")
             
-            export_graph_to_csv(final_graph, file_name)
 
 
             nodes = extract_nodes(final_graph)
@@ -63,6 +62,16 @@ class TextToGraphPipeline:
             if(saveEvaluation):
                 save_evaluation(save_entities=True, entities=entities, save_graph=True, graph= final_graph, save_statistics=True, file_path=f"{file_name}.txt")
             update_progress("Grafo generado correctamente.")
+
+            while True:  
+                    export = input("\nDesea exportar el grafo en formato csv?\n 1. Si\n 2. No\n > ")
+                    if export== '1':
+                        export_graph_to_csv(final_graph, file_name)
+                        break  
+                    elif export== '2':
+                        break
+                    else:
+                        print("\nOpción incorrecta. Por favor, inténtalo nuevamente.")
 
         except Exception as e:
             error_message = f"Error durante la creación del grafo: {str(e)}"
